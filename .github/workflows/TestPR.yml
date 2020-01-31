@@ -4,6 +4,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
+    - run: sleep 30
     - uses: actions/checkout@v2
     - run: echo hello
     
