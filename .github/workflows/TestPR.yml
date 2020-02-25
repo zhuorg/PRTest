@@ -5,12 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v2
-    - name: addlabel
-      uses: buildsville/add-remove-label@v1
+    - uses: actions/labeler@v2
       with:
-        token: ${{secrets.GITHUB_TOKEN}}
-        labels: automerge
-        type: add
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
   
     - name: automerge
       uses: "pascalgn/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
