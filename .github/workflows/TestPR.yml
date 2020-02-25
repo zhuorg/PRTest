@@ -9,8 +9,10 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
   
-    - name: automerge
-      uses: "pascalgn/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
-      env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: Automatically Merge PR
+      uses: plm9606/automerge_actions@1.0.0
+      with:
+        # The PR label name you want to use when merge PR automatically.
+        # GitHub WebHook Secret Token
+        github-token: ${{ secrets.GITHUB_TOKEN }}
     
