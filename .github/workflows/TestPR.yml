@@ -4,7 +4,16 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-    - run: sleep 30
     - uses: actions/checkout@v2
-    - run: echo hello
+    - name: addlabel
+      uses: buildsville/add-remove-label@v1
+      with:
+        token: ${{secrets.GITHUB_TOKEN}}
+        labels: automerge
+        type: add
+  
+    - name: automerge
+      uses: "pascalgn/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
+      env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     
