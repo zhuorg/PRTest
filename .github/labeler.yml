@@ -1,5 +1,5 @@
 automerge:
-  - ./*
+  - '*'
 test:
   - src/**/*.spec.js
 
