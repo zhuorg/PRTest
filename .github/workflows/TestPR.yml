@@ -9,10 +9,9 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
   
-    - name: Integration check
-      uses: squalrus/merge-bot@v0.2.0
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        labels: automerge
+    - name: automerge
+      uses: "pascalgn/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
     
