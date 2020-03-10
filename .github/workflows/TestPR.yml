@@ -13,7 +13,8 @@ jobs:
       run: |
          echo "$GITHUB_CONTEXT"
          echo "contains status: needs-attention ${{ contains(github.event.pull_request.labels.*.name, 'status: needs-attention') }}"
-         $labels=${{github.event.pull_request.labels.*.name}}
-         echo ${#labels[@]}
+         echo ${#${{github.event.pull_request.labels.*.name}}[@]}
+         arry=(a,b,c)
+         ${#array[@]}
     - uses: actions/checkout@v2
       if:  contains(github.event.pull_request.labels.*.name, 'status needs-attention' )
