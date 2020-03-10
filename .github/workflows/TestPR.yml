@@ -13,9 +13,7 @@ jobs:
           labels: ${{ toJson(github.event.pull_request.labels) }}
       run: |
          echo "$labels"
-         echo $labels | jq '. | length'
          LL=$(echo $labels | jq '. | length' )
-         echo $LL
          echo "::set-output name=Label_length::$LL"
 
     - name: run scripts
