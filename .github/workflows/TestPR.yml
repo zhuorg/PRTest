@@ -12,7 +12,7 @@ jobs:
       run: |
          echo "$GITHUB_CONTEXT"
          echo "contains status: needs-attention ${{ contains(github.event.pull_request.labels.*.name, 'status: needs-attention') }}"
-         echo ${github.event.pull_request.labels.*.name}}
+         echo ${github.event.pull_request.labels.*.name.length}}
 
     - uses: actions/checkout@v2
       if:  contains(github.event.pull_request.labels.*.name, 'status needs-attention' )
