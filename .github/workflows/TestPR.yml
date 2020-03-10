@@ -12,6 +12,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github.event.pull_request.labels) }}
       run: |
          echo "$GITHUB_CONTEXT"
-         echo "contains good first issue ${{ contains(github.event.pull_request.labels.*.name, 'status: needs-attention') }}"
+         echo "contains status: needs-attention ${{ contains(github.event.pull_request.labels.*.name, 'status: needs-attention') }}"
     - uses: actions/checkout@v2
-      if: contains(github.event.pull_request.labels.*.name, 'status\:\ needs-attention' )  
+      if:  contains(github.event.pull_request.labels.*.name, 'status: needs-attention' )
