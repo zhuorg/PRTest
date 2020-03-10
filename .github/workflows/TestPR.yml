@@ -13,6 +13,8 @@ jobs:
          echo "$GITHUB_CONTEXT"
          echo "contains status: needs-attention ${{ contains(github.event.pull_request.labels.*.name, 'status: needs-attention') }}"
          echo ${{ toJson(github.event.pull_request.labels).count}}
+         aa=${{github.event.pull_request.labels.*.name}}
+         echo "${#aa[@]}"
          echo ${{github.event.pull_request.labels.*.name.length}}
 
     - uses: actions/checkout@v2
