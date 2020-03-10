@@ -18,11 +18,10 @@ jobs:
          echo $LL
          echo "::set-output name=Label_length::$LL"
 
-    - name: Dump output message
+    - name: run scripts
       if : steps.getlength.outputs.Label_length >= 1
-      run: echo $COMMIT_MS
-      env:
-        COMMIT_MS: ${{ steps.getlength.outputs.Label_length }}
+      run: echo hello
+      
 
     - uses: actions/checkout@v2
       if: |
