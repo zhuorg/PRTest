@@ -20,4 +20,4 @@ jobs:
          echo ${{github.event.pull_request.labels.*.name.length}}
 
     - uses: actions/checkout@v2
-      if:  contains(github.event.pull_request.labels.*.name, 'status needs-attention' )
+      if: "contains(github.event.pull_request.labels.*.name, 'status: needs-attention')"
