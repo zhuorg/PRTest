@@ -7,17 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     
-    - name: Dump GitHub context
+    - name: get label length
+      id: getlength
       env:
-          GITHUB_CONTEXT: ${{ toJson(github.event.pull_request.labels) }}
+          labels: ${{ toJson(github.event.pull_request.labels) }}
       run: |
-         echo "$GITHUB_CONTEXT"
-         echo "contains status: needs-attention ${{ contains(github.event.pull_request.labels.*.name, 'status: needs-attention') }}"
-         echo ${{ toJson(github.event.pull_request.labels).count}}
-         aa=(a b c)
-        
-         echo "${#aa[@]}"
-         echo ${{github.event.pull_request.labels.*.name.length}}
+         echo "$labels"
+         echo $labels | jq '. | length'
+         LL= $labels | jq '. | length'
+         echo "::set-output name=Label_length::$LL"
+
+    - name: Dump output message
+      if : steps.getlength.outputs.Label_length >= 1
+      env:
+        COMMIT_MS: ${{ steps.getlength.outputs.Label_length }}
 
     - uses: actions/checkout@v2
       if: |
