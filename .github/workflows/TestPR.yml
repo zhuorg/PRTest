@@ -14,7 +14,7 @@ jobs:
       run: |
          echo "$labels"
          echo $labels | jq '. | length'
-         LL=" $labels | jq '. | length' "
+         LL=$( $labels | jq '. | length' )
          echo "::set-output name=Label_length::$LL"
 
     - name: Dump output message
