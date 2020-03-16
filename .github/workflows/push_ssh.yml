@@ -13,5 +13,5 @@ jobs:
          known_hosts: ${{ secrets.KNOWN_HOSTS }}
          
     - run: | 
-        git remote set-url bitbucket git@bitbucket.org:jingzhuyan/prtest.git 
+        git remote add bitbucket git@bitbucket.org:jingzhuyan/prtest.git 
         git push bitbucket master -f
