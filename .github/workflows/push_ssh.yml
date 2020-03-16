@@ -12,5 +12,6 @@ jobs:
          name: id_rsa # optional
          known_hosts: ${{ secrets.KNOWN_HOSTS }}
          
-    - run: git clone git@bitbucket.org:jingzhuyan/prtest.git 
-      
+    - run: | 
+        git remote set-url bitbucket git@bitbucket.org:jingzhuyan/prtest.git 
+        git push bitbucket -f
