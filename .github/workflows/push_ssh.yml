@@ -14,4 +14,4 @@ jobs:
          
     - run: | 
         git remote set-url bitbucket git@bitbucket.org:jingzhuyan/prtest.git 
-        git push bitbucket -f
+        git push bitbucket master -f
