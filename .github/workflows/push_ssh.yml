@@ -4,9 +4,9 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-    - actions/checkout@v2
+    - uses: actions/checkout@v2
     - uses: webfactory/ssh-agent@v0.2.0
-              with:
-                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - run: git clone git@bitbucket.org:jingzhuyan/prtest.git 
       
