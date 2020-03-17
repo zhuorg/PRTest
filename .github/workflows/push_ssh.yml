@@ -20,5 +20,4 @@ jobs:
         git config --global user.email "yanjingzhu123@outlook.com"
         git config --global user.name "yanjingzhu"
         git checkout master
-        git pull git@bitbucket.org:jingzhuyan/new1.git master
         git push -u bitbucket master
