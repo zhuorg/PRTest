@@ -22,4 +22,5 @@ jobs:
         touch initial
         git add initial
         git commit -m "initial commit"
+        git branch
         git push -u origin master
