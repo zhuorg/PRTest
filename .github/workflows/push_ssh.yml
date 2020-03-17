@@ -19,5 +19,5 @@ jobs:
         git config --global user.name "yanjingzhu"
         git add .
         git commit -m "from github"
-        git push origin master
+        git push origin master -f
         
