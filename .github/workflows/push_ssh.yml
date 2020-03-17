@@ -16,9 +16,9 @@ jobs:
          known_hosts: ${{ secrets.KNOWN_HOSTS }}
          
     - run: | 
-        git remote add bitbucket git@bitbucket.org:jingzhuyan/test2.git
+        git remote add bitbucket git@bitbucket.org:jingzhuyan/new1.git
         git config --global user.email "yanjingzhu123@outlook.com"
         git config --global user.name "yanjingzhu"
         git checkout master
-        git pull git@bitbucket.org:jingzhuyan/test2.git master
+        git pull git@bitbucket.org:jingzhuyan/new1.git master
         git push -u bitbucket master
