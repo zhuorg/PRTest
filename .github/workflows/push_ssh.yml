@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+      with:
+        ref: 'master'
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:
@@ -17,5 +19,5 @@ jobs:
         git remote add origin git@bitbucket.org:jingzhuyan/test2.git 
         git config --global user.email "yanjingzhu123@outlook.com"
         git config --global user.name "yanjingzhu"
-        git push origin
+        git push origin master
         
