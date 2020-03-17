@@ -18,5 +18,5 @@ jobs:
         git remote add bitbucket git@bitbucket.org:jingzhuyan/test2.git
         git config --global user.email "yanjingzhu123@outlook.com"
         git config --global user.name "yanjingzhu"
-        git branch
+        git checkout -b master 
         git push -u bitbucket master
