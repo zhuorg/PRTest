@@ -17,7 +17,5 @@ jobs:
         git remote add origin git@bitbucket.org:jingzhuyan/test2.git 
         git config --global user.email "yanjingzhu123@outlook.com"
         git config --global user.name "yanjingzhu"
-        git add .
-        git commit -m "from github"
         git push origin master -f
         
