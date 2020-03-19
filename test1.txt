@@ -1,5 +1,6 @@
 456
 5562
+<<<<<<< HEAD
 
 new 39
 dddd
@@ -10,5 +11,10 @@ hhhh
 ssss
 add new
 
+new change in vm
+
+dddd
+ssss
+add new
 new change in vm
 
