@@ -2,7 +2,7 @@ name: test force push
 on: 
   push: 
     paths:
-    - "readme.md"
+    - "*.md"
 jobs:
   job1: 
     runs-on: ubuntu-latest
