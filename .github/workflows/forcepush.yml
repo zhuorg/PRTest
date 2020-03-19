@@ -6,7 +6,7 @@ on:
 jobs:
   job1: 
     runs-on: ubuntu-latest
-    stpes: 
+    steps: 
      - name: Dump GitHub.event context
        env:
           EVENT_CONTEXT: ${{ toJson(github.event) }}
