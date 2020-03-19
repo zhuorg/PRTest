@@ -12,4 +12,5 @@ jobs:
         java-version: 11
     - name: Create test database
       run: |
+        sudo systemctl start mysql
         mysql -uroot -proot < databases/tracker/create_databases.sql
