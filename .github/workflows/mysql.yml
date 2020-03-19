@@ -1,5 +1,5 @@
 name: mysql
-on: push
+on: check_suite
 
 jobs:
   build-and-publish:
