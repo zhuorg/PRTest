@@ -1,0 +1,12 @@
+name: create a repo dispatch event
+on: push
+jobs:
+  job1: 
+    runs-on: ubuntu-latest
+    steps: 
+    - run: echo hello
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        event-type: my-event
