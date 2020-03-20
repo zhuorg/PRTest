@@ -1,5 +1,5 @@
 name: create a repo dispatch event
-on: push
+on: check_suite
 jobs:
   job1: 
     runs-on: ubuntu-latest
