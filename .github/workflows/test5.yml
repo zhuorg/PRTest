@@ -1,0 +1,13 @@
+name: test branch rules
+
+on: push
+
+jobs:
+
+  test_rules:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
