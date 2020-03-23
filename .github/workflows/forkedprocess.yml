@@ -9,5 +9,9 @@ jobs:
     
     - name: Install gometalinter
       run: |
+        export GOPATH=$HOME/go
+        export GOBIN=$(go env GOPATH)/bin
+        export PATH=$PATH:$GOPATH
+        export PATH=$PATH:$GOBIN
         go get -u github.com/alecthomas/gometalinter
         gometalinter --install
