@@ -4,14 +4,10 @@ on:
 jobs:
   example:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu
+    
     steps:
-    - uses: actions/checkout@v1
-    - name: forked job
+    
+    - name: Install gometalinter
       run: |
-        apt update && apt install -y iputils-ping
-        ping google.ca > /tmp/ping.out &
-        echo "this will echo"
-    - name: this is never reached
-      run: echo "i dont get echoed ever"
+        go get -u github.com/alecthomas/gometalinter
+	      gometalinter --install
