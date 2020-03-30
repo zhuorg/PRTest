@@ -8,4 +8,4 @@ jobs:
     steps:
     
     - name: test dockercontainer_action
-      uses: zhuorg/dockercontainer_action@8078be1
+      uses: zhuorg/dockercontainer_action@9c82462
