@@ -7,5 +7,5 @@ jobs:
     
     steps:
     
-    - name: Install gometalinter
-    - uses: zhuorg/dockercontainer_action@master
+    - name: test dockercontainer_action
+      uses: zhuorg/dockercontainer_action@master
