@@ -10,25 +10,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-    - run: echo $GITHUB_CONTEXT
+    - name: Dump GitHub context
       env:
-        GITHUB_CONTEXT: ${{ github }}
-    - name: get label length
-      id: getlength
-      env:
-          labels: ${{ toJson(github.event.pull_request.labels) }}
-      run: |
-         echo "$labels"
-         LL=$(echo $labels | jq '. | length' )
-         echo "::set-output name=Label_length::$LL"
-
-    - name: run scripts
-      if : steps.getlength.outputs.Label_length >= 1
-      run: echo hello
-      
-
-    - uses: actions/checkout@v2
-      if: |
-        contains(github.event.pull_request.labels.*.name, 'status: needs-attention')
-
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
 
