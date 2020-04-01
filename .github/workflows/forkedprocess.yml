@@ -1,6 +1,6 @@
 name: try docker action
 on:
-  - check_suite:
+  check_suite:
 jobs:
   example:
     runs-on: ubuntu-latest
