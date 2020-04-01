@@ -1,7 +1,7 @@
 name: Test
 on: 
   pull_request:
-    types: [labeled, edited, synchronized]
+  push:
 jobs:
   job1:
     runs-on: ubuntu-latest
