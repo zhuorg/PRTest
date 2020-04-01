@@ -8,7 +8,7 @@ jobs:
     steps: 
     - run: echo $GITHUB_CONTEXT
       env:
-        GITHUB_CONTEXT: "${{ github }}"
+        GITHUB_CONTEXT: ${{ github }}
     - name: get label length
       id: getlength
       env:
