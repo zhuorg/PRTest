@@ -6,7 +6,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-    
+    - run: echo $GITHUB_CONTEXT
+      env:
+        GITHUB_CONTEXT: "${{ github }}"
     - name: get label length
       id: getlength
       env:
@@ -24,3 +26,5 @@ jobs:
     - uses: actions/checkout@v2
       if: |
         contains(github.event.pull_request.labels.*.name, 'status: needs-attention')
+
+
