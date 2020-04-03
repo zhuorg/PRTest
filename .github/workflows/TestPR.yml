@@ -10,8 +10,17 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-      shell: bash {0}
+    - name: multiple-lines
+      id: setenv_description
+      run: |
+          description="one 333\n
+                       two 333\n
+                       three 333"
+          echo $description
+          description="${description//'%'/'%25'}"
+          description="${description//$'\n'/'%0A'}"
+          description="${description//$'\r'/'%0D'}" 
+          echo "::set-env name=description::$description" 
+    - run: echo ${{env.description}}
+         
+     
