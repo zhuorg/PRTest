@@ -13,9 +13,9 @@ jobs:
     - name: multiple-lines
       id: setenv_description
       run: |
-          description="one 333 \n
-                       two 333 \n
-                       three 333"
+          description="hello 111
+                       hello 222
+                       hello 333"
           echo $description
           description="${description//'%'/'%25'}"
           description="${description//$'\n'/'%0A'}"
