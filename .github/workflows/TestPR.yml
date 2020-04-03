@@ -14,7 +14,7 @@ jobs:
       id: setenv_description
       run: |
           description="one 333 \n
-                       two 333\n
+                       two 333 \n
                        three 333"
           echo $description
           description="${description//'%'/'%25'}"
