@@ -21,6 +21,7 @@ jobs:
           description="${description//$'\n'/'%0A'}"
           description="${description//$'\r'/'%0D'}" 
           echo "::set-env name=description::$description" 
+      shell: bash
     - run: echo ${{env.description}}
          
      
