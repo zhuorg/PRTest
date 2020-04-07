@@ -1,9 +1,7 @@
 name: Test
 
 on: 
-  release: 
-    types:
-    - published
+  push:
 
 jobs:
   job1:
