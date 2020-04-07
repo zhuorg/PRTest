@@ -1,0 +1,26 @@
+name: push to bitbucket
+on: push
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+        ref: 'master'
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+         key: ${{ secrets.SSH_PRIVATE_KEY }}
+         name: id_rsa # optional
+         known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    - run: ssh tfs@172.17.16.57
+      
+          
+#   - run: | 
+#      git remote add bitbucket git@bitbucket.org:jingzhuyan/new1.git
+#        git config --global user.email "yanjingzhu123@outlook.com"
+#        git config --global user.name "yanjingzhu"
+#        git checkout master
+#        git push -u bitbucket master

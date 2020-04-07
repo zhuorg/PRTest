@@ -1,5 +1,10 @@
 name: Test
-on: push
+
+on: 
+  release: 
+    types:
+    - published
+
 jobs:
   job1:
     if: github.ref == 'ref/heads/master'
@@ -9,5 +14,18 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps: 
-    - run: echo hello
-    
+    - name: multiple-lines
+      id: setenv_description
+      run: |
+          description="this is line one \
+                       this is line two \
+                       this is line three"
+          echo $description
+          description="${description//'%'/'%25'}"
+          description="${description//$'\n'/'%0A'}"
+          description="${description//$'\r'/'%0D'}" 
+          echo "::set-env name=description::$description" 
+      shell: bash
+    - run: echo ${{env.description}}
+         
+     
