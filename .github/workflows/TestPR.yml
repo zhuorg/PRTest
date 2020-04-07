@@ -1,7 +1,12 @@
 name: Test
-on: pull_request
+on: push
 jobs:
   job1:
+    if: sithub.ref == 'ref/heads/master'
+    runs-on: ubuntu-latest
+    steps: 
+    - run: echo hello
+  job2:
     runs-on: ubuntu-latest
     steps: 
     - run: echo hello
