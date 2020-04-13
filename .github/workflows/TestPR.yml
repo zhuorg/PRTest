@@ -3,7 +3,8 @@ name: add comment
 on: 
   issues:
     types: [opened]
-
+  pull_request:
+    types: [opened]
 jobs:
 
   job2:
@@ -11,7 +12,7 @@ jobs:
     steps:
     - run: echo $issue_context
       env: 
-        issue_context: ${{tojson(github.event.issue.number)}}
+        issue_context: ${{ tojson(github.event) }}
     - name: Create comment
       uses: peter-evans/create-or-update-comment@v1
       with:
