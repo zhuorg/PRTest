@@ -1,17 +1,22 @@
 name: Test
 
 on: 
-  push:
+  pull_request:
 
 jobs:
 
   job2:
     runs-on: ubuntu-latest
-    steps: 
-
-    - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
-      env: 
-        SECRET1: ${{secrets.SECRET1}}
+    steps:
+    - uses: actions/checkout@v2-beta
+      with:
+        fetch-depth: 0
+    - uses: simplabs/ember-asset-size-action@v1
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+   # - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
+    #  env: 
+     #   SECRET1: ${{secrets.SECRET1}}
       
          
      
