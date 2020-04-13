@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
 
-    - run: |
-        echo $SECRET1
-        az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1
-      env:
+    - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
+      env: 
         SECRET1: ${{secrets.SECRET1}}
       
          
