@@ -4,28 +4,13 @@ on:
   push:
 
 jobs:
-  job1:
-    if: github.ref == 'ref/heads/master'
-    runs-on: ubuntu-latest
-    steps: 
-    - run: echo hello
+
   job2:
     runs-on: ubuntu-latest
     steps: 
-    - name: multiple-lines
-      id: setenv_description
-      run: |
-          description="this is line one \
-                       this is line two \
-                       this is line three"
-          echo $description
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}" 
-          echo "::set-env name=description::$description" 
-      shell: bash
+
     - run: |
-        echo ${{env.description}}
+        echo $SECRET1
         az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1
       env:
         SECRET1: ${{secrets.SECRET1}}
