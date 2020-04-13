@@ -1,4 +1,4 @@
-name: Test
+name: add comment
 
 on: 
   issues:
@@ -8,9 +8,15 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2-beta
+    - run: echo $issue_context
+      env: 
+        issue_context: ${{tojson(github.event)}}
+    - name: Create comment
+      uses: peter-evans/create-or-update-comment@v1
       with:
-        fetch-depth: 0
+        issue-number: 17
+        body: |
+            ${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
     - uses: actions/first-interaction@v1
       with: 
         repo-token: ${{ secrets.GITHUB_TOKEN }}
