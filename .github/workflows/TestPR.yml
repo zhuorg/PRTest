@@ -13,17 +13,20 @@ jobs:
     - run: echo $issue_context
       env: 
         issue_context: ${{ tojson(github.event) }}
-    - name: Create comment
+    - name: Create comment for issue
+      if: github.event == 'issue'
       uses: peter-evans/create-or-update-comment@v1
       with:
         issue-number: ${{tojson(github.event.issue.number)}}
         body: |
             @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
-    - uses: actions/first-interaction@v1
-      with: 
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: '${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.'
-        pr-message: '${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.'
+    - name: Create comment for PR
+      if: github.event == 'pull_request'
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        issue-number: ${{tojson(github.event.number)}}
+        body: |
+            @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
    # - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
     #  env: 
      #   SECRET1: ${{secrets.SECRET1}}
