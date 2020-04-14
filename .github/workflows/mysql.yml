@@ -4,11 +4,16 @@ on: push
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    services: 
-      psql:
-        image: "postgres"
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
         volumes:
-         - ./seed.sql:/docker-entrypoint-initdb.d/init.sql
+          - "/var/run/mysqld:/var/run/mysqld"
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - uses: actions/checkout@v1
     - name: Set up JDK 11
