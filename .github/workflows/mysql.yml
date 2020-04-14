@@ -1,9 +1,14 @@
 name: mysql
-on: check_suite
+on: push
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    services: 
+      psql:
+        image: "postgres"
+        volumes:
+         - ./seed.sql:/docker-entrypoint-initdb.d/init.sql
     steps:
     - uses: actions/checkout@v1
     - name: Set up JDK 11
