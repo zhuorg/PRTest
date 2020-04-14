@@ -4,7 +4,16 @@ on: push
 jobs:
   build-and-publish:
     runs-on: ubuntu-16.04
-  
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+        volumes:
+          - "/var/run/mysqld:/var/run/mysqld"
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - run: |
          cd /var/run/mysqld
