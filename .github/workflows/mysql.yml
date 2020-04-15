@@ -5,10 +5,9 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-16.04
     steps:
-    - run: |
-         cd /var/run/mysqld
-         ls
     - name: Create test database
       run: |
         sudo systemctl start mysql
         mysql -uroot -proot < databases/tracker/create_databases.sql
+      env:
+        prerelease: "${{ github.ref != 'refs/heads/master' ? 'true' : 'false' }}"       
