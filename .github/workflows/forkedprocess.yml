@@ -7,7 +7,8 @@ jobs:
     
     steps:
     
-    - name: test java home
-      run: | 
-        echo $JAVA_HOME_8
-        echo $JAVA_HOME
+    - name: Install Lazarus
+      uses: gcarreno/setup-lazarus@v2.2.0
+      with:
+        lazarus-version: ${{ matrix.lazarus-versions }}
+        include-packages: "Synapse 40.1"
