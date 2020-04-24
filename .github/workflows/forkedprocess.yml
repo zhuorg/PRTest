@@ -8,4 +8,6 @@ jobs:
     steps:
     
     - name: test java home
-      run: echo $JAVA_HOME_8
+      run: | 
+        echo $JAVA_HOME_8
+        echo $JAVA_HOME
