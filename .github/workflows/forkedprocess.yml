@@ -2,11 +2,14 @@ name: try docker action
 on:
   push:
 jobs:
-  example:
-    runs-on: ubuntu-latest
-    
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-18.04,ubuntu-latest]
+        lazarus-versions: [dist, 2.0.6]
     steps:
-    
+    - uses: actions/checkout@v2
     - name: Install Lazarus
       uses: gcarreno/setup-lazarus@v2.2.0
       with:
