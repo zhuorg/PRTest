@@ -1,7 +1,6 @@
 name: mysql
 on: 
-  release:
-     types: [created]
+  push: 
 
 jobs:
   release:
