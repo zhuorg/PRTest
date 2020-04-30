@@ -13,13 +13,10 @@ jobs:
             MYSQL_DATABASE: laravel_tags
         ports:
             - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3 --secure-file-priv=""
     steps:
       - run: |
-          echo -e "[mysqld]\nsecure-file-priv=''" | sudo tee -a /etc/mysql/my.cnf
           cat /etc/mysql/my.cnf        
-          /etc/init.d/mysqld restart
-
       - run: |
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot  -e "SELECT @@global.secure_file_priv"
 
