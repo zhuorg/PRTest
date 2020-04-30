@@ -16,7 +16,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - run: |
-          echo -e "[mysqld]\nsecure-file-priv=''" | sudo tee -a /etc/mysql/my.cnf
+          echo -e "secure-file-priv=''" | sudo tee -a /etc/mysql/my.cnf
           cat /etc/mysql/my.cnf
           sudo service mysql restart
       - run: |
