@@ -19,6 +19,7 @@ jobs:
           echo -e "secure-file-priv=''" | sudo tee -a /etc/mysql/my.cnf
           cat /etc/mysql/my.cnf
           sudo service mysql restart
+          cat /etc/mysql/my.cnf
       - run: |
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot  -e "SELECT @@global.secure_file_priv"
    # - name: Dump GitHub context
