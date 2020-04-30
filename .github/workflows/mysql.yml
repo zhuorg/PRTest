@@ -22,6 +22,7 @@ jobs:
           cat /etc/mysql/my.cnf
       - run: |
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot  -e "SELECT @@global.secure_file_priv"
+          SHOW VARIABLES LIKE "secure_file_priv"
    # - name: Dump GitHub context
    #   env:
    #     GITHUB_CONTEXT: ${{ toJson(github) }}
