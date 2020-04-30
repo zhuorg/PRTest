@@ -17,6 +17,7 @@ jobs:
         volumes: 
           - ${{github.workspace}}/mysqlconf:/etc/mysql/conf.d
     steps:
+      - uses: actions/checkout@v1
       - run: |
           cat /etc/mysql/my.cnf        
       - run: |
