@@ -1,10 +1,10 @@
 name: add comment
 
-on: 
-  issues:
-    types: [opened]
-  pull_request:
-    types: [opened]
+on: check_suite
+  #issues:
+  #  types: [opened]
+  #pull_request:
+  #  types: [opened]
 jobs:
 
   job2:
