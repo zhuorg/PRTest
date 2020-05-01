@@ -20,8 +20,8 @@ jobs:
       - uses: actions/checkout@v1
       - run: |
           echo -e "[mysqld]\nsecure-file-priv=''" | sudo tee -a /etc/mysql/my.cnf
-          cp /home/runner/work/PRTest/PRTest/mysqlconf/mysql.cnf /etc/mysql/conf.d/mysql.cnf
-          cat /etc/mysql/conf.d/mysql.cnf     
+          cp /home/runner/work/PRTest/PRTest/mysqlconf/config-file.cnf /etc/mysql/conf.d/config-file.cnf
+          cat /etc/mysql/conf.d/config-file.cnf    
           sudo service mysql restart  
           sleep 10s
       - run: |
