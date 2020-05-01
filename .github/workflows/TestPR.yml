@@ -11,9 +11,9 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-    - run: echo $issue_context
+    - run: echo $github_context
       env: 
-        issue_context: ${{ tojson(github.event) }}
+        github_context: ${{ tojson(github) }}
     - name: Create comment for issue
       if: github.event_name == 'issues'
       uses: peter-evans/create-or-update-comment@v1
