@@ -24,6 +24,7 @@ jobs:
           cat /etc/mysql/conf.d/config-file.cnf    
           sudo service mysql restart  
           sleep 10s
+          sudo systemctl status mysql
       - run: |
           
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot  -e "SELECT @@global.secure_file_priv"
