@@ -1,15 +1,17 @@
 name: try docker action
 on:
-  release:
-    types:
-    - published
+  check_suite:
 jobs:
-  example:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        package: [identity, db, api, ui]
+        operating-system: [ubuntu-18.04,ubuntu-latest]
+        lazarus-versions: [dist, 2.0.6]
     steps:
-    
-    - name: test dockercontainer_action
-      run: echo hello
+    - uses: actions/checkout@v2
+    - name: Install Lazarus
+      uses: gcarreno/setup-lazarus@v2.2.0
+      with:
+        lazarus-version: ${{ matrix.lazarus-versions }}
+        include-packages: "Synapse 40.1"

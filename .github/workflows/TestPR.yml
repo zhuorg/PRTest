@@ -5,6 +5,7 @@ on:
     types: [opened]
   pull_request:
  
+
 jobs:
 
   job2:
@@ -14,7 +15,7 @@ jobs:
       env: 
         issue_context: ${{ tojson(github.event) }}
     - name: Create comment for issue
-      if: github.event_name == 'issue'
+      if: github.event_name == 'issues'
       uses: peter-evans/create-or-update-comment@v1
       with:
         issue-number: ${{tojson(github.event.issue.number)}}
