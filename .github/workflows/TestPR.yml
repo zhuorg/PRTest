@@ -17,4 +17,4 @@ jobs:
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo ${{github.event.pull_request.review.state }}
+      run: echo ${{github.event.review.state }}
