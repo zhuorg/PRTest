@@ -3,15 +3,19 @@ name: add comment
 on: 
   issues:
     types: [opened]
-  #pull_request:
- 
+  pull_request:
+    branches:
+      - master
+    types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
 
   job2:
     runs-on: ubuntu-latest
     steps:
-    - run: echo $github_context
+    - run: | 
+        echo $github_context
+        k'k'k
       env: 
         github_context: ${{ tojson(github) }}
     - name: Create comment for issue
