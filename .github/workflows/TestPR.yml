@@ -35,7 +35,7 @@ jobs:
             @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
    # - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
    #  env: 
-     #   SECRET1: ${{secrets.SECRET1}}
+   #   SECRET1: ${{secrets.SECRET1}}
       
          
      
