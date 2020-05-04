@@ -9,7 +9,7 @@ jobs:
 
     - run: |
         mkdir ~/.ssh
-        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N ''
+        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' -R localhost
         ls /home/runner/.ssh/
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
         chmod 644 /home/runner/.ssh/authorized_keys
