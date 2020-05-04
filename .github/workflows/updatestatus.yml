@@ -1,6 +1,6 @@
 name: update status
 
-on: push
+on: check_suite
 
 jobs:
   build:
