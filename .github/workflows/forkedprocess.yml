@@ -9,15 +9,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: print secrets
       run: |
-          echo $Secret1 >> src/.env
+          echo $DEV_ENV_FILE  >> src/.env
           cat src/.env 
       shell: bash
       env:
-        Secret1: ${{secrets.SECRET1}}
+        DEV_ENV_FILE : ${{secrets.SECRET1}}
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
-        # Artifact name
-       name: secret 
-       # A file, directory or wildcard pattern that describes what to upload
+       name: DEV_ENV_FILE  
        path: src/.env   
