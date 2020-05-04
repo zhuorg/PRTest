@@ -8,8 +8,9 @@ jobs:
     steps:
 
     - run: |
-        ssh-keygen -f id_rsa -t rsa -N ''
-        ls ~/.ssh
+        mkdir ~/.ssh
+        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N ''
+        ls /home/runner/.ssh/
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
         chmod 640 /home/runner/.ssh/authorized_keys
         sudo service ssh reload
