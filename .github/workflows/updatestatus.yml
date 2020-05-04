@@ -9,7 +9,7 @@ jobs:
 
     - run: |
         mkdir  ~/.ssh 
-        cd .ssh
+        ls 
         ssh-keygen
         cat id_rsa.pub >> authorized_keys
         chmod 640 authorized_keys
