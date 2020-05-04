@@ -1,11 +1,10 @@
 name: update status
 
-on: check_suite
+on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: fff
+    - run: ssh user@127.0.0.1 -p 22
   
