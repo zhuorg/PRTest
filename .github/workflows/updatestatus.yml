@@ -9,10 +9,11 @@ jobs:
 
     - run: |
         mkdir ~/.ssh
-        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' -R localhost
+        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
         ls /home/runner/.ssh/
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
-        chmod 644 /home/runner/.ssh/authorized_keys
+        $PWD
+        chmod og-wx ~/.ssh/authorized_keys 
         cat /home/runner/.ssh/authorized_keys
         sudo service ssh reload
         echo "================================================="
