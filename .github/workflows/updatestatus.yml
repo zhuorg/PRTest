@@ -8,9 +8,7 @@ jobs:
     steps:
 
     - run: |
-        mkdir  ~/.ssh 
-        ls 
-        ssh-keygen
+        ssh-keygen -f id_rsa -t rsa -N ''
         cat id_rsa.pub >> authorized_keys
         chmod 640 authorized_keys
         sudo service ssh reload
