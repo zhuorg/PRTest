@@ -10,9 +10,9 @@ jobs:
 
         sudo apt-get install ssh
         cat /etc/ssh/sshd_config
-     
+        ssh -o StrictHostKeyChecking=no root@localhost
   
-  #ssh -o StrictHostKeyChecking=no localhost
+  #ssh -o StrictHostKeyChecking=no root@localhost
    # - run: |
     #    ssh runner@localhost -p 22 -t
   
