@@ -9,9 +9,11 @@ jobs:
 
     - run: |
         ssh-keygen -f id_rsa -t rsa -N ''
-        cat id_rsa.pub >> authorized_keys
-        chmod 640 authorized_keys
+        ls ~/.ssh
+        cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
+        chmod 640 /home/runner/.ssh/authorized_keys
         sudo service ssh reload
+        echo "================================================="
         ssh localhost -p 22
  #>> /root/.ssh/authorized_keys 
   #ssh -o StrictHostKeyChecking=no root@localhost
