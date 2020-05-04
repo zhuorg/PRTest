@@ -6,5 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: ssh runner@127.0.0.1 -p 22
+    - run: |
+        sudo apt-get install ssh
+        ssh runner@127.0.0.1 -p 22
   
