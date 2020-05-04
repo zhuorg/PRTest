@@ -9,7 +9,7 @@ jobs:
     - run: |
 
         sudo apt-get install ssh
-        ssh localhost -p 22
+        ssh -vvv localhost -p 22
    # - run: |
     #    ssh runner@localhost -p 22 -t
   
