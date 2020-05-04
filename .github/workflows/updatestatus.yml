@@ -6,15 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Set up ssh-agent
-      uses: yakuhzi/action-ssh-agent@v1
-      with:
-        public: ${{ secrets.SSH_PUBLIC_KEY }}
-        private: ${{ secrets.SSH_PRIVATE_KEY }}
+
     - run: |
-        cat /home/runner/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
+        cat /home/runner/.ssh/id_rsa.pub 
         ssh root@localhost  -p 22
-        
+ #>> /root/.ssh/authorized_keys 
   #ssh -o StrictHostKeyChecking=no root@localhost
    # - run: |
     #    ssh runner@localhost -p 22 -t
