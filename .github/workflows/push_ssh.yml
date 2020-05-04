@@ -1,5 +1,5 @@
 name: push to bitbucket
-on: check_suite
+on: push
 
 jobs:
   repo-sync:
