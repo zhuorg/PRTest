@@ -8,8 +8,12 @@ jobs:
     steps:
 
     - run: |
-        cat /home/runner/.ssh/id_rsa.pub 
-        ssh root@localhost  -p 22
+        cd ~/.ssh 
+        ssh-keygen
+        cat id_rsa.pub >> authorized_keys
+        chmod 640 authorized_keys
+        sudo service ssh reload
+        ssh localhost -p 22
  #>> /root/.ssh/authorized_keys 
   #ssh -o StrictHostKeyChecking=no root@localhost
    # - run: |
