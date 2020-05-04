@@ -10,8 +10,10 @@ jobs:
 
         sudo apt-get install ssh
         cat /etc/ssh/sshd_config
-        ssh -o StrictHostKeyChecking=no root@localhost
-  
+        echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+        sudo service ssh restart
+        ssh -o StrictHostKeyChecking=no runner@localhost
+        
   #ssh -o StrictHostKeyChecking=no root@localhost
    # - run: |
     #    ssh runner@localhost -p 22 -t
