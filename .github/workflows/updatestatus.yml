@@ -8,7 +8,8 @@ jobs:
     steps:
 
     - run: |
-        cd ~/.ssh 
+        mkdir  ~/.ssh 
+        cd .ssh
         ssh-keygen
         cat id_rsa.pub >> authorized_keys
         chmod 640 authorized_keys
