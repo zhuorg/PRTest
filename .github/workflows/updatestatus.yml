@@ -6,7 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
+    - uses: actions/check-out@v2
+      with:
+        repository: Yanjingzhu/1030new
     - run: |
         mkdir ~/.ssh
         ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
