@@ -13,9 +13,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-    - run: | 
-        echo $github_context
-        k'k'k
+    - run:  echo $github_context
       env: 
         github_context: ${{ tojson(github) }}
     - name: Create comment for issue
