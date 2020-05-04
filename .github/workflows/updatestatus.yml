@@ -8,5 +8,5 @@ jobs:
     steps:
     - run: |
         sudo apt-get install ssh
-        ssh runner@localhost -p 22
+        ssh runner@localhost -p 22 -t
   
