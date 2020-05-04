@@ -3,7 +3,7 @@ name: add comment
 on: 
   issues:
     types: [opened]
-  pull_request:
+  #pull_request:
  
 
 jobs:
