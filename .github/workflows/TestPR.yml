@@ -3,10 +3,10 @@ name: add comment
 on: 
   issues:
     types: [opened]
-  pull_request:
-    branches: 
-      - master
-    types: ['opened', 'edited', 'reopened', 'synchronize']
+  #pull_request:
+  #  branches: 
+     # - master
+   # types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
 
