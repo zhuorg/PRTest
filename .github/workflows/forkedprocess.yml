@@ -1,17 +1,16 @@
 name: try docker action
 on:
-  check_suite:
+  push:
 jobs:
   build:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ubuntu-18.04,ubuntu-latest]
-        lazarus-versions: [dist, 2.0.6]
+    runs-on: ubuntu-latest
+   
     steps:
     - uses: actions/checkout@v2
-    - name: Install Lazarus
-      uses: gcarreno/setup-lazarus@v2.2.0
-      with:
-        lazarus-version: ${{ matrix.lazarus-versions }}
-        include-packages: "Synapse 40.1"
+    - name: print secrets
+      run: |
+          echo $Secret1 >> src/.env
+          cat src/.env 
+      shell: bash
+      env:
+        Secret1: ${{secrets.SECRET1}}
