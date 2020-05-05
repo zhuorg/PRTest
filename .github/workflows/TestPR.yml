@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: 
       - master
+    paths:
+      - '.github/workflows/TestPR.yml'
     types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
