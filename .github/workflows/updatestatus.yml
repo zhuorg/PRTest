@@ -1,0 +1,26 @@
+name: update status
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: Yanjingzhu/1030new
+    - run: |
+        mkdir ~/.ssh
+        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
+        ls /home/runner/.ssh/
+        cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
+        chmod og-wx ~/.ssh/authorized_keys 
+        cat /home/runner/.ssh/authorized_keys
+        sudo service ssh reload
+        echo "================================================="
+ #ssh -vvv localhost -p 22
+ #>> /root/.ssh/authorized_keys 
+  #ssh -o StrictHostKeyChecking=no root@localhost
+   # - run: |
+    #    ssh runner@localhost -p 22 -t
+  

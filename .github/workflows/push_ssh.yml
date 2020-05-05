@@ -15,7 +15,7 @@ jobs:
          key: ${{ secrets.SSH_PRIVATE_KEY }}
          name: id_rsa # optional
          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-    - run: ssh tfs@172.17.16.57
+    - run: ssh runner@localhost -p 22 
       
           
 #   - run: | 

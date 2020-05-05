@@ -3,15 +3,19 @@ on:
   check_suite:
 jobs:
   build:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ubuntu-18.04,ubuntu-latest]
-        lazarus-versions: [dist, 2.0.6]
+    runs-on: ubuntu-latest
+   
     steps:
     - uses: actions/checkout@v2
-    - name: Install Lazarus
-      uses: gcarreno/setup-lazarus@v2.2.0
+    - name: print secrets
+      run: |
+          echo $DEV_ENV_FILE  >> src/.env
+          cat src/.env 
+      shell: bash
+      env:
+        DEV_ENV_FILE : ${{secrets.SECRET1}}
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
       with:
-        lazarus-version: ${{ matrix.lazarus-versions }}
-        include-packages: "Synapse 40.1"
+       name: DEV_ENV_FILE  
+       path: src/.env   

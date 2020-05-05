@@ -1,18 +1,26 @@
 name: add comment
 
-on: check_suite
-  #issues:
-  #  types: [opened]
-  #pull_request:
-  #  types: [opened]
+on: 
+  issues:
+    types: [opened]
+  pull_request:
+    branches: 
+      - master
+    paths:
+      - '.github/workflows/TestPR.yml'
+    types: ['opened', 'edited', 'reopened', 'synchronize']
+
 jobs:
 
   job2:
     runs-on: ubuntu-latest
     steps:
-    - run: echo $issue_context
+    - name: fail when reopen
+      if: github.event.action == 'opened'
+      run: jjjjj
+    - run:  echo $github_context
       env: 
-        issue_context: ${{ tojson(github.event) }}
+        github_context: ${{ tojson(github) }}
     - name: Create comment for issue
       if: github.event_name == 'issues'
       uses: peter-evans/create-or-update-comment@v1
@@ -28,8 +36,8 @@ jobs:
         body: |
             @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
    # - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
-    #  env: 
-     #   SECRET1: ${{secrets.SECRET1}}
+   #   env: 
+   #     SECRET1: ${{secrets.SECRET1}}
       
          
      
