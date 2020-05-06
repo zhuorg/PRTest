@@ -1,11 +1,12 @@
 name: add comment
-
+filter:
+  true: [ master, develop, testing ]
+  false: [ '**', '!**-wip' ]
 on: 
   issues:
     types: [opened]
-  pull_request:
-    branches: 
-      - master
+  push:
+    branches: ${{ filter.${{ github.repository_owner == 'my-main' || github.repository_owner == 'maintainer-id' }} }}
     paths:
       - '.github/workflows/TestPR.yml'
     types: ['opened', 'edited', 'reopened', 'synchronize']
