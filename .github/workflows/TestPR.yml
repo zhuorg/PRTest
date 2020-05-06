@@ -6,7 +6,7 @@ on:
   issues:
     types: [opened]
   push:
-    branches: ${{ filter.${{ github.repository_owner == 'my-main' || github.repository_owner == 'maintainer-id' }} }}
+    branches: ${{ filter.${{ github.repository_owner == 'zhuorg' }} }}
     paths:
       - '.github/workflows/TestPR.yml'
     types: ['opened', 'edited', 'reopened', 'synchronize']
