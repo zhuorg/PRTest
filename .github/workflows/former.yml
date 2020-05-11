@@ -1,13 +1,10 @@
 name: create a repo dispatch event
-on: check_suite
+on: push
 jobs:
-  job1: 
+  build:
     runs-on: ubuntu-latest
-    steps: 
-    - run: echo hello
-    - name: Repository Dispatch
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
-        event-type: my-event
-        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+    steps:
+    - name: Check package version 
+      run: |
+        manifest=$(curl -X GET https://docker.pkg.github.com/v2/zhuorg/dockertest/docker-example/manifests/5bcea215e75eb025458e145a117907a3556e98e3 -u $GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }} | jq '.')
+        echo $manifest
