@@ -1,12 +1,8 @@
 name: add comment
-filter:
-  true: [ master, develop, testing ]
-  false: [ '**', '!**-wip' ]
 on: 
   issues:
     types: [opened]
   push:
-    branches: ${{ filter.${{ github.repository_owner == 'zhuorg' }} }}
     paths:
       - '.github/workflows/TestPR.yml'
 
