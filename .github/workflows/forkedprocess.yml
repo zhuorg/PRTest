@@ -1,6 +1,8 @@
 name: try docker action
 on:
-  check_suite:
+  push:
+    paths: 
+      - '.github/workflows/forkedprocess.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
