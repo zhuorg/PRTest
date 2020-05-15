@@ -2,8 +2,8 @@
 name: mysql
 on:          
   push:
-    - paths: 
-      - '.github/workflows/mysql.yml'
+     paths: 
+     - '.github/workflows/mysql.yml'
 
 jobs:
   release:
