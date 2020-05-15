@@ -16,6 +16,8 @@ jobs:
       shell: bash
       env:
         DEV_ENV_FILE : ${{secrets.SECRET1}}
+    - name: cancelling
+      uses: andymckay/cancel-action@0.2
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
