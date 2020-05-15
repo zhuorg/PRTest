@@ -6,13 +6,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-   
     steps:
     - uses: actions/checkout@v2
     - name: print secrets
       run: |
          echo 'product_build'
-
       env: 
         ENV: ${{secrets.env}}
         
