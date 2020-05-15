@@ -1,5 +1,9 @@
 name: push to bitbucket
-on: check_suite
+on: 
+  push:
+    paths: 
+      - '.github/workflows/push_ssh.yml'
+  
 
 jobs:
   repo-sync:
