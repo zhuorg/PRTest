@@ -1,7 +1,9 @@
           
 name: mysql
-on: 
-  check_suite: 
+on:          
+  push:
+    - paths: 
+      - '.github/workflows/mysql.yml'
 
 jobs:
   release:
