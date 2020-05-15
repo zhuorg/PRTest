@@ -1,6 +1,9 @@
 name: update status
 
-on: push
+on: 
+  push:
+    paths: 
+      - '.github/workflows/updatestatus.yml'
 
 jobs:
   build:
