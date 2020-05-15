@@ -1,5 +1,8 @@
 name: create a repo dispatch event
-on: push
+on: 
+  push:
+    paths: 
+    - '.github/workflows/former.yml'    
 jobs:
   build:
     runs-on: ubuntu-latest
