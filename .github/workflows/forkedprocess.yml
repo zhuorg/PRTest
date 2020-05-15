@@ -11,12 +11,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: print secrets
       run: |
-         echo 'true'
-          .....
-          exit 1
-      shell: bash
+         echo 'product_build'
+
+      env: 
+        ENV: ${{secrets.env}}
+        
+        
+        
+        
     - name: cancelling
-      if: failure()
+#       if: failure()
       uses: andymckay/cancel-action@0.2
     - run: sleep 10s
     - name: Upload a Build Artifact
