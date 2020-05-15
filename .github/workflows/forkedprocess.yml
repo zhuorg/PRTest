@@ -18,6 +18,7 @@ jobs:
         DEV_ENV_FILE : ${{secrets.SECRET1}}
     - name: cancelling
       uses: andymckay/cancel-action@0.2
+    - run: sleep 10s
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
