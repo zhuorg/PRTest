@@ -1,8 +1,8 @@
 name: create a repo dispatch event
 on: 
-  push:
-    paths: 
-    - '.github/workflows/former.yml'    
+  pull_request:
+    paths-ignore: 
+    - 'README.md'    
 jobs:
   build:
     runs-on: ubuntu-latest
