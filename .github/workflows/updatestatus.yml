@@ -13,7 +13,7 @@ jobs:
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v2  
     - run: |
-        ssh -vvv localhost -p 22
+        ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
  #ssh -vvv localhost -p 22 1
 
   
