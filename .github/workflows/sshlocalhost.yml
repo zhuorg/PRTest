@@ -13,8 +13,8 @@ jobs:
         ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
         ls /home/runner/.ssh/
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
-        chmod og-wx ~/.ssh/authorized_keys 
-        chmod og-wx ~/.ssh/id_rsa
+        chmod og+wx ~/.ssh/authorized_keys 
+        chmod og+wx ~/.ssh/id_rsa
         cat /home/runner/.ssh/authorized_keys
         sudo service ssh reload
         echo "================================================="
