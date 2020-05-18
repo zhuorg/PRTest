@@ -1,0 +1,28 @@
+name: ssh connect to localhost 22 
+on: 
+  push:
+    paths: 
+      - '.github/workflows/sshlocalhost.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        mkdir ~/.ssh
+        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
+        ls /home/runner/.ssh/
+        cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
+        chmod og-wx ~/.ssh/authorized_keys 
+        cat /home/runner/.ssh/authorized_keys
+        sudo service ssh reload
+        echo "================================================="
+
+ #ssh -vvv localhost -p 22
+
+ #>> /root/.ssh/authorized_keys 
+
+  #ssh -o StrictHostKeyChecking=no root@localhost
+
+   - run: |
+       ssh -vvv runner@localhost -p 22 -t
