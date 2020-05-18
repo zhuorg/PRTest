@@ -17,12 +17,12 @@ jobs:
         cat /home/runner/.ssh/authorized_keys
         sudo service ssh reload
         echo "================================================="
-
+    - run: |
+        ssh -vvv runner@localhost -p 22 -t
  #ssh -vvv localhost -p 22
 
  #>> /root/.ssh/authorized_keys 
 
   #ssh -o StrictHostKeyChecking=no root@localhost
 
-   - run: |
-       ssh -vvv runner@localhost -p 22 -t
+
