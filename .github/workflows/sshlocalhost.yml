@@ -15,7 +15,10 @@ jobs:
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
         chmod og+wx ~/.ssh/authorized_keys 
         chmod og+wx ~/.ssh/id_rsa
+        cat ~/.ssh/id_rsa
+        echo "================================================="
         cat /home/runner/.ssh/authorized_keys
+        echo "================================================="
         sudo service ssh reload
         echo "================================================="
     - run: |
