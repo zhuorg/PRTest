@@ -9,8 +9,4 @@ jobs:
     steps:
     #ddd
     - uses: actions/checkout@v2
-    - uses: harupy/comment-on-pr@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        filename: ../tests.log
+    - run: echo ${{github.run_id}}  
