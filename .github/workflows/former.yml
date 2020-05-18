@@ -1,8 +1,6 @@
 name: create a repo dispatch event
 on: 
-  pull_request:
-    paths-ignore: 
-    - 'README.md'    
+  push:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,3 +8,6 @@ jobs:
     #ddd
     - uses: actions/checkout@v2
     - run: echo ${{github.run_id}}  
+    - uses: actions/setup-java@1
+      with:
+        java-version: '11.0.5'
