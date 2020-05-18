@@ -15,8 +15,5 @@ jobs:
     - run: |
         ssh -vvv localhost -p 22
  #ssh -vvv localhost -p 22
- #>> /root/.ssh/authorized_keys 
-  #ssh -o StrictHostKeyChecking=no root@localhost
-   # - run: |
-    #    ssh runner@localhost -p 22 -t
+
   
