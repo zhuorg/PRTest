@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     #ddd
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github.event) }}
+      run: echo "$GITHUB_CONTEXT"
     - uses: actions/checkout@v2
     - name: Check package version 
       run: |
