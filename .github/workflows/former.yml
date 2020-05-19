@@ -1,8 +1,8 @@
 name: create a repo dispatch event
 on: 
   pull_request:
-    paths-ignore: 
-    - 'README.md'    
+    branches:
+      - develop 
 jobs:
   build:
     runs-on: ubuntu-latest
