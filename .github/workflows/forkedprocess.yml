@@ -1,10 +1,11 @@
 name: try docker action
 on:
-  push:
+  pull_request:
     paths: 
       - '.github/workflows/forkedprocess.yml'
 jobs:
   build:
+    if: 1!=1
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
