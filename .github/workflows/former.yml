@@ -1,19 +1,15 @@
 name: create a repo dispatch event
 on: 
   pull_request:
-    branches:
-      - develop 
+
 jobs:
   skip-build:
     runs-on: ubuntu-latest
     steps:
     #ddd
-    - uses: actions/checkout@v1
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github.event) }}
-      run: echo "$GITHUB_CONTEXT"
-
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
     - name: file changes 
       id: changefile
       run: | 
