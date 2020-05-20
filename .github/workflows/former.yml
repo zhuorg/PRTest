@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     #ddd
+    - uses: actions/checkout@v2
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github.event) }}
       run: echo "$GITHUB_CONTEXT"
-    - uses: actions/checkout@v2
-    - name: Check package version 
-      run: |
-        manifest=$(curl -X GET https://docker.pkg.github.com/v2/zhuorg/dockertest/docker-example/manifests/5bcea215e75eb025458e145a117907a3556e98e3 -u $GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }} | jq '.')
-        echo $manifest
+
+    - name: file changes 
+      run: | 
+        echo $(git diff-tree --no-commit-id --name-only -r ${{ github.event.before }} ${{github.event.after}})
