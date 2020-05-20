@@ -4,7 +4,7 @@ on:
     branches:
       - develop 
 jobs:
-  build:
+  skip-build:
     runs-on: ubuntu-latest
     steps:
     #ddd
