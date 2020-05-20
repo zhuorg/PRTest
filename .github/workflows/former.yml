@@ -15,13 +15,15 @@ jobs:
       run: echo "$GITHUB_CONTEXT"
 
     - name: file changes 
+      id: changefile
       run: | 
         changed_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.event.before }} ${{github.event.after}})
         file_count=$(git diff-tree --no-commit-id --name-only -r ${{ github.event.before }} ${{github.event.after}} | wc -l )
-        echo $file_count
         if [[ $changed_file == '.github/workflows/former.yml' && $file_count == 1 ]]
         then 
           echo ::set-output name=continue::false
         else 
           echo ::set-output name=continue::true
         fi
+    - run: echo hello
+      if: steps.changefile.outputs.continue == 'true' 
