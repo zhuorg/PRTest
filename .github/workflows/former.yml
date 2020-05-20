@@ -7,9 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     #ddd
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 2
+    - uses: actions/checkout@v1
     - name: file changes 
       id: changefile
       run: | 
