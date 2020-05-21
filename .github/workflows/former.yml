@@ -11,7 +11,7 @@ jobs:
     #ddd
     - uses: actions/checkout@v1
     - name: file changes 
-      id: changefile
+      id: changefile 
       run: | 
         changed_file=$(git diff-tree --no-commit-id --name-only -r ${{ github.event.before }} ${{github.event.after}})
         file_count=$(git diff-tree --no-commit-id --name-only -r ${{ github.event.before }} ${{github.event.after}} | wc -l )
@@ -24,7 +24,7 @@ jobs:
   build:
      runs-on: ubuntu-latest
      needs: [check-changes]
-     if: needs.check-changes.outputs.continue == 'true' 
+     if: needs.check-changes.outputs.continue == 'false' 
      steps:
      - run: echo hello
        
