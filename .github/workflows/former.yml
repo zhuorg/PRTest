@@ -18,5 +18,4 @@ jobs:
           exit 1
         fi
 
-        # this will not pass
-        [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
+        
