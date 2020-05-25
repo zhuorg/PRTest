@@ -1,8 +1,6 @@
-name: create a repo dispatch event
+name: test bash
 on: 
-  pull_request:
-    branches:
-      - develop 
+  push:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,5 +9,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: Check package version 
       run: |
-        manifest=$(curl -X GET https://docker.pkg.github.com/v2/zhuorg/dockertest/docker-example/manifests/5bcea215e75eb025458e145a117907a3556e98e3 -u $GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }} | jq '.')
-        echo $manifest
+        RELEASE_VERSION=2.3.1
+        TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
+
+        # this will pass
+        if [[ "${#TAG_LIST[@]}" -ne 3 ]]; then
+          echo "$RELEASE_VERSION is not a valid semantic version"
+          exit 1
+        fi
+
+        # this will not pass
+        [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
