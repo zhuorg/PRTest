@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run : | 
+    - name: mask
+      run : | 
         echo "::add-mask::Mona The Octocat"
-        echo "Mona The Octocat"
+        echo "Mona The Octocat" 
+      
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v2  
     - run: |
