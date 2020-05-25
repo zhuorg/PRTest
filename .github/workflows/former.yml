@@ -10,7 +10,7 @@ jobs:
     - name: Check package version 
       run: |
         RELEASE_VERSION=2.3.1
-        TAG_LIST=$(echo $RELEASE_VERSION | tr '.' ' ')
+        TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
 
         # this will pass
         if [[ "${#TAG_LIST[@]}" -ne 3 ]]; then
