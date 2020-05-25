@@ -12,13 +12,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: mask
       run : | 
-        echo "::add-mask::Mona The Octocat"
+        chmod +x .github/mask.sh
+        .github/mask.sh
         echo "Mona The Octocat" 
       
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v2  
-    - run: |
-        ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
+#     - name: Setup tmate session
+#       uses: mxschmitt/action-tmate@v2  
+#     - run: |
+#         ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
  #ssh -vvv localhost -p 22 1234
 
   
