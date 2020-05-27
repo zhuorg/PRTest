@@ -1,6 +1,6 @@
 name: test bash
 on: 
-  repository_dispatch:
+  registry_package:
 jobs:
   build:
     runs-on: ubuntu-latest
