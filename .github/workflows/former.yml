@@ -1,11 +1,13 @@
 name: test bash
 on: 
   push:
-    branches:
-      - '*' # matches every branch
+    paths:
+      - '23.txt' 
+      - 'src/111/**.js'
   pull_request:
-    branches:
-      - '*' # matches ever
+    paths:
+      - '23.txt' 
+
 jobs:
   build:
     runs-on: ubuntu-latest
