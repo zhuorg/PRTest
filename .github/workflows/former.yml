@@ -1,20 +1,30 @@
 name: test bash
 on: 
   push:
+    branches:
+      - 'master'
+      - 'devel'
+  pull_request:
+    branches:
+      - 'master'
+      - 'devel'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     #ddd
     - uses: actions/checkout@v2
-    - name: Check package version 
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT" 
+    - name: step hello
       run: |
-        RELEASE_VERSION=2.3.1
-        TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
+        echo hello
         
-    - name: Download all dependent repositories.
-      id: setup
-      run: echo hello
-      if: steps.check.outcome == 'failure' || steps.check.outcome == 'success'
+    - name: create artifacts
+      run: echo artifacts
+      if: github.eventname == 'push' && ( github.ref == 'master' || github.ref == 'devel'
 
 
