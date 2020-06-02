@@ -25,6 +25,6 @@ jobs:
         
     - name: create artifacts
       run: echo artifacts
-      if: github.eventname == 'push' && ( github.ref == 'master' || github.ref == 'devel' )
+      if: github.event_name == 'push' && ( github.ref == 'master' || github.ref == 'devel' )
 
 
