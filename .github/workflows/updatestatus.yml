@@ -1,19 +1,25 @@
 name: update status
 
-on: 
-  push:
-    paths: 
-      - '.github/workflows/updatestatus.yml'
+on:
+  issues:
+    types: [milestoned, labeled]
+  pull_request:
+    types: [labeled]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v2  
-    - run: |
-        ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
- #ssh -vvv localhost -p 22 1
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+      
+#     - name: Setup tmate session
+#       uses: mxschmitt/action-tmate@v2  
+#     - run: |
+#         ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
+ #ssh -vvv localhost -p 22 1234
 
   
