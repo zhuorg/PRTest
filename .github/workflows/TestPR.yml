@@ -1,19 +1,13 @@
 name: add comment
 on: 
-  issues:
-    types: [opened]
-  push:
-    paths:
-      - '.github/workflows/TestPR.yml'
-
+  pull_request:
+    branches: 
+      - develop
 jobs:
 
   job2:
     runs-on: ubuntu-latest
     steps:
-    - name: fail when reopen
-      if: github.event.action == 'opened'
-      run: jjjjj
     - run:  echo $github_context
       env: 
         github_context: ${{ tojson(github) }}
