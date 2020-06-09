@@ -9,10 +9,12 @@ jobs:
       - name: Setup environment and set output
         run: |
           echo "::set-env name=TRAINING_START_TIMESTAMP::2020-05-06T14:05:44.000Z"
-      - name: set output
-        id: report
-        run: |
-          echo "::set-output name=TRAINING_START_TIMESTAMP::$TRAINING_START_TIMESTAMP"
+      - run: |
+          echo ${{steps.report.outputs.TRAINING_START_TIMESTAMP}}
+#       - name: set output
+#         id: report
+#         run: |
+#           echo "::set-output name=TRAINING_START_TIMESTAMP::$TRAINING_START_TIMESTAMP"
     outputs:
       TRAINING_START_TIMESTAMP: ${{steps.report.outputs.TRAINING_START_TIMESTAMP}}
 
