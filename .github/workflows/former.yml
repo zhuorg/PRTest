@@ -1,13 +1,7 @@
 name: test bash
 on: 
-  push:
-    branches:
-      - 'master'
-      - 'devel'
-  pull_request:
-    branches:
-      - 'master'
-      - 'devel'
+  repository_dispatch:
+
 
 jobs:
   build:
