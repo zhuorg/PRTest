@@ -1,23 +1,29 @@
 name: update status
 
 on:
-  issues:
-    types: [milestoned, labeled]
- 
+  push:
 jobs:
-  build:
-    runs-on: windows-latest
+  job1:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-      
-#     - name: Setup tmate session
-#       uses: mxschmitt/action-tmate@v2  
-#     - run: |
-#         ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
- #ssh -vvv localhost -p 22 1234
+      - name: Setup environment and set output
+        run: |
+          echo "::set-env name=TRAINING_START_TIMESTAMP::2020-05-06T14:05:44.000Z"
+      - name: set output
+        id: report
+        run: |
+          echo "::set-output name=TRAINING_START_TIMESTAMP::$TRAINING_START_TIMESTAMP"
+    outputs:
+      TRAINING_START_TIMESTAMP: ${{steps.report.outputs.TRAINING_START_TIMESTAMP}}
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Setup environment and print timestamp
+        run: |
+          echo "::set-env name=TRAINING_START_TIMESTAMP::${{needs.job1.outputs.TRAINING_START_TIMESTAMP}}"
+      - name: Show me the ts!
+        run: echo $TRAINING_START_TIMESTAMP
 
   
