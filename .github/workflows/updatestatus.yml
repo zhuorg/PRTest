@@ -26,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: job1
     steps:
+      - run: |
+           echo ${{needs.job1.outputs.TRAINING_START_TIMESTAMP}}
       - name: Setup environment and print timestamp
         run: |
           echo "::set-env name=TRAINING_START_TIMESTAMP::${{needs.job1.outputs.TRAINING_START_TIMESTAMP}}"
