@@ -1,29 +1,23 @@
 name: update status
 
-on: 
-  push:
-    paths: 
-      - '.github/workflows/updatestatus.yml'
-
+on:
+  issues:
+    types: [milestoned, labeled]
+ 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        repository: Yanjingzhu/1030new
-    - run: |
-        mkdir ~/.ssh
-        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
-        ls /home/runner/.ssh/
-        cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
-        chmod og-wx ~/.ssh/authorized_keys 
-        cat /home/runner/.ssh/authorized_keys
-        sudo service ssh reload
-        echo "================================================="
- #ssh -vvv localhost -p 22
- #>> /root/.ssh/authorized_keys 
-  #ssh -o StrictHostKeyChecking=no root@localhost
-   # - run: |
-    #    ssh runner@localhost -p 22 -t
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+      
+#     - name: Setup tmate session
+#       uses: mxschmitt/action-tmate@v2  
+#     - run: |
+#         ssh -vvv localhost -p 22 -o StrictHostKeyChecking=no
+ #ssh -vvv localhost -p 22 1234
+
   
