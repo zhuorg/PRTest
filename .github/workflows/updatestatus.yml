@@ -2,18 +2,17 @@ name: update status
 
 on:
   issues:
-    types: [labeled]
+    types: [milestoned]
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - name: mask
-      run : | 
-        chmod +x .github/mask.sh
-        .github/mask.sh
-        echo "Mona The Octocat" 
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
       
 #     - name: Setup tmate session
 #       uses: mxschmitt/action-tmate@v2  
