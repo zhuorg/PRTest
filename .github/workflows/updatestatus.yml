@@ -2,7 +2,9 @@ name: update status
 
 on:
   issues:
-    types: [milestoned]
+    types: [milestoned, labeled]
+  pull_request:
+    types: [labeled]
 
 jobs:
   build:
