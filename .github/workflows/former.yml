@@ -1,24 +1,22 @@
 name: test bash
 on: 
-  repository_dispatch:
+  pull_request:
 
 
 jobs:
-  build:
+  automerge:
+    name: Merge Dependabot pull request
     runs-on: ubuntu-latest
+    if: github.base_ref == 'master' && github.actor == 'zhu5201314'
     steps:
-    #ddd
-    - uses: actions/checkout@v2
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT" 
-    - name: step hello
-      run: |
-        echo hello
-        
-    - name: create artifacts
-      run: echo artifacts
-      if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/devel' )
+      - uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.pullRequests.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            })
 
 
