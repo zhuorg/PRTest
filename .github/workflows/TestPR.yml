@@ -1,7 +1,5 @@
 name: add comment
 on: 
-  issues:
-    types: [opened]
   push:
     paths:
       - '.github/workflows/TestPR.yml'
@@ -9,31 +7,10 @@ on:
 jobs:
 
   job2:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-    - name: fail when reopen
-      if: github.event.action == 'opened'
-      run: jjjjj
-    - run:  echo $github_context
-      env: 
-        github_context: ${{ tojson(github) }}
-    - name: Create comment for issue
-      if: github.event_name == 'issues'
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        issue-number: ${{tojson(github.event.issue.number)}}
-        body: |
-            @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
-    - name: Create comment for PR
-      if: github.event_name == 'pull_request'
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        issue-number: ${{tojson(github.event.number)}}
-        body: |
-            @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
-   # - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
-   #   env: 
-   #     SECRET1: ${{secrets.SECRET1}}
+    - name: check simulator
+      run: xcrun simctl list
       
          
      
