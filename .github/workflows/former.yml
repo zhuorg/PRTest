@@ -1,22 +1,17 @@
 name: test bash
 on: 
-  pull_request:
-
+  issue_comment:
+    types: [created]
 
 jobs:
-  automerge:
-    name: Merge Dependabot pull request
+  tests:
+    if: contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/run-e2e')
     runs-on: ubuntu-latest
-    if: github.base_ref == 'master' && github.actor == 'zhu5201314'
     steps:
-      - uses: actions/github-script@v2
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            })
-
+     - name: Dump GitHub context
+       env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+       run: echo "$GITHUB_CONTEXT"
+     - run: 
+         echo hello
 
