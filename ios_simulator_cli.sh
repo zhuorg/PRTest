@@ -93,7 +93,7 @@ open_simulator () {
   SIMULATOR_ID=$( get_uid )
   echo $SIMULATOR_ID
   exit_if_no_simulator
-  open -a Simulator --args -CurrentDeviceUDID $SIMULATOR_ID
+  open -a '/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator' --args -CurrentDeviceUDID $SIMULATOR_ID
 }
 
 get_status () {
