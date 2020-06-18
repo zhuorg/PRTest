@@ -13,7 +13,9 @@ jobs:
 #         xcrun simctl list
 #         /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID 67864C3A-1C15-48B9-96E5-EA9B279F2253
 #         xcrun simctl launch 67864C3A-1C15-48B9-96E5-EA9B279F2253 CSharpMath.Ios.Unit-Tests
-      run: open -a /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app --args -CurrentDeviceUDID 67864C3A-1C15-48B9-96E5-EA9B279F2253
+      run: | 
+        ls /Applications/Xcode.app/Contents/Developer/Applications/
+        open -a /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app --args -CurrentDeviceUDID 67864C3A-1C15-48B9-96E5-EA9B279F2253
 #       run: | 
 #         string_ch="This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
         
