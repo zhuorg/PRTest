@@ -14,11 +14,11 @@ jobs:
 #         xcrun simctl list
 #         /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID 67864C3A-1C15-48B9-96E5-EA9B279F2253
 #         xcrun simctl launch 67864C3A-1C15-48B9-96E5-EA9B279F2253 CSharpMath.Ios.Unit-Tests
- #./ios_simulator_cli.sh my_simulator create iPhone-11 iOS-13-5
+ #./ios_simulator_cli.sh my_simulator create iPhone-11 iOS-13-5   ./ios_simulator_cli.sh my_simulator boot 
       run: | 
         chmod +x ios_simulator_cli.sh
         ./ios_simulator_cli.sh my_simulator create iPhone-11 iOS-13-5
-        ./ios_simulator_cli.sh my_simulator boot 
+        
         ./ios_simulator_cli.sh my_simulator open
         xcrun simctl list
 #       run: | 
