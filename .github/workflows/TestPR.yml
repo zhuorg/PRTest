@@ -14,7 +14,7 @@ jobs:
 #         /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID 67864C3A-1C15-48B9-96E5-EA9B279F2253
 #         xcrun simctl launch 67864C3A-1C15-48B9-96E5-EA9B279F2253 CSharpMath.Ios.Unit-Tests
       run: | 
-        string_ch="This is a message with chars !*’();:@&=+$,/?# with % and \n in it"
+        string_ch="This is a message with chars !*’();:@&=+$,/?# %28 with %25 and %0A in it"
         echo "::set-output name=description::$string_ch"
         echo ::error::$string_ch
          
