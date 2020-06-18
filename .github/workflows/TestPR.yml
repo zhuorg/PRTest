@@ -18,8 +18,8 @@ jobs:
       run: | 
         chmod +x ios_simulator_cli.sh
        
-        ./ios_simulator_cli.sh iPhone-11 boot 
-        ./ios_simulator_cli.sh iPhone-11 open
+        ./ios_simulator_cli.sh 'iPhone 11' boot 
+        ./ios_simulator_cli.sh 'iPhone 11' open
         xcrun simctl list
 #       run: | 
 #         string_ch="This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
