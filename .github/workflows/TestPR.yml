@@ -16,7 +16,7 @@ jobs:
       run: | 
         string_ch="This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
         
-        echo “::error::This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it”
+        echo "::error::This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
         echo "::set-output name=description::$string_ch"
         echo ::error::$string_ch
          
