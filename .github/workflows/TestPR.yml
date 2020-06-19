@@ -7,21 +7,15 @@ on:
 jobs:
 
   job2:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    container: 
+      image: docker.pkg.github.com/zhuorg/dockertest/yandocker:1.0.2
     steps:
     - uses: actions/checkout@v2
-    - name: check simulator
-#         xcrun simctl list
-#         /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID 67864C3A-1C15-48B9-96E5-EA9B279F2253
-#         xcrun simctl launch 67864C3A-1C15-48B9-96E5-EA9B279F2253 CSharpMath.Ios.Unit-Tests
- #./ios_simulator_cli.sh my_simulator create iPhone-11 iOS-13-5   ./ios_simulator_cli.sh my_simulator boot 
-      run: | 
-        chmod +x ios_simulator_cli.sh
-        ./ios_simulator_cli.sh my_simulator create iPhone-11 iOS-13-5
-        
-        ./ios_simulator_cli.sh my_simulator open
-        xcrun simctl list
-#       run: | 
+    - name: check container
+
+      run: |  
+        echo "hello"
 #         string_ch="This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
         
 #         echo "::error::This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
