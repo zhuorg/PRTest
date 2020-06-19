@@ -8,14 +8,14 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
-    container: 
-      image: docker.pkg.github.com/zhuorg/dockertest/yandocker:1.0.2
+    
     steps:
     - uses: actions/checkout@v2
     - name: check container
 
       run: |  
         echo "hello"
+        yarn install https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.9.1.tgz
 #         string_ch="This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
         
 #         echo "::error::This is a message with chars !*’();:@&=+$,/?# with %25 and %0A in it"
