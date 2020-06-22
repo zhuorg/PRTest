@@ -9,4 +9,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.sha }}
+      - name: check type
+        if: github.event.action == 'my-event'
+        run: echo ${{ github.event.client_payload.sha }}
