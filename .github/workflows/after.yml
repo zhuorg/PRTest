@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.client_payload.ref }}
+  
       - name: check type
         if: github.event.action == 'my-event'
         run: echo ${{ github.event.client_payload.sha }}
