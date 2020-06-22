@@ -1,7 +1,7 @@
 name: update status
 
 on:
-  repository_dispatch:
+  project:
 jobs:
   job1:
     runs-on: ubuntu-latest
