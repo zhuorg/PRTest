@@ -9,7 +9,7 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     outputs:
-      commitid: steps.commit.outputs.commitid
+      commitid: ${{ steps.commit.outputs.commitid }}
       
     steps:
     - uses: actions/checkout@v2
@@ -32,6 +32,7 @@ jobs:
     name: Build from the updated template
     runs-on: ubuntu-latest
     steps:
+      - run : echo ${{ needs.prepare.outputs.commitid }}
       - uses: actions/checkout@v2
         with:
           ref: ${{ needs.prepare.outputs.commitid }}
