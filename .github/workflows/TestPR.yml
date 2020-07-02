@@ -9,7 +9,7 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     outputs:
-      commit_id: steps.commit.outputs.commitid
+      commitid: steps.commit.outputs.commitid
       
     steps:
     - uses: actions/checkout@v2
@@ -34,4 +34,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ needs.prepare.outputs.commit_id }}
+          ref: ${{ needs.prepare.outputs.commitid }}
