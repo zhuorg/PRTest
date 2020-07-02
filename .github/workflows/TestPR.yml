@@ -8,20 +8,24 @@ jobs:
 
   prepare:
     runs-on: ubuntu-latest
-    
+    outputs:
+      commit_id: steps.commit.outputs.commitid
+      
     steps:
     - uses: actions/checkout@v2
     - name: Create local changes
       run: |
         echo "hello" >> sales663.txt
     - name: Commit files
+      id: commit
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
         git push -u origin $GITHUB_REF 
-    
+        SHA=$(git rev-parse --short HEAD)
+        echo "::set-output name=commitid::$SHA"
          
   trystable:
     needs: prepare
@@ -29,6 +33,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with: 
-          fetch-depth: 2
-      - run: git pull origin master
+        with:
+          ref: ${{ needs.prepare.outputs.commit_id }}
