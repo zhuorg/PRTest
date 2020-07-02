@@ -24,7 +24,7 @@ jobs:
         git add --all
         git commit -m "Add changes" -a
         git push -u origin $GITHUB_REF 
-        SHA=$(git rev-parse --short HEAD)
+        SHA=$(git rev-parse HEAD)
         echo "::set-output name=commitid::$SHA"
          
   trystable:
