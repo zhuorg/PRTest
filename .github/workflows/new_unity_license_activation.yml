@@ -1,11 +1,9 @@
 name: Get new Unity license activation file
-on: 
-  push:
-      
+on:
   workflow_dispatch:
     inputs:
-      newUnityVersion:
-        description: 'The new version number string to generate the license activation file for.'
+      puppy:
+        description: 'A kind of puppy.'
         required: true
 
 jobs:
