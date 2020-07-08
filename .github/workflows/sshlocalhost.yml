@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: cat /etc/ssh/sshd_config
     - run: |
         mkdir ~/.ssh
         ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
