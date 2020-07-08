@@ -1,7 +1,6 @@
 name: add comment
 on: 
-  issues:
-    types: [opened]
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/TestPR.yml'
