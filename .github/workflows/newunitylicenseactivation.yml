@@ -1,4 +1,4 @@
-name: Get new Unity license file
+name: Get new Unity activation file
 on:  
   workflow_dispatch:
     inputs:
