@@ -1,9 +1,6 @@
-name: rename
+name: rename 2
 on: 
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/TestPR.yml'
 
 jobs:
 
