@@ -1,7 +1,5 @@
 name: Get new Unity license activation file
-on:
-  push:
-    
+on:  
   workflow_dispatch:
     inputs:
       newUnityVersion:
