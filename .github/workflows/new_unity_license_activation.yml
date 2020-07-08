@@ -1,9 +1,11 @@
+
 name: Get new Unity license activation file
 on:
   workflow_dispatch:
     inputs:
       puppy:
         description: 'A kind of puppy.'
+
         required: true
 
 jobs:
