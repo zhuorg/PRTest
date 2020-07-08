@@ -1,11 +1,6 @@
 name: test bash
 on: 
-  push:
-    branches:
-      - '*' # matches every branch
-  pull_request:
-    branches:
-      - '*' # matches ever
+  repository_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
