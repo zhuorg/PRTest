@@ -1,4 +1,4 @@
-name: add comment
+name: rename
 on: 
   workflow_dispatch:
   push:
