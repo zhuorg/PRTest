@@ -1,5 +1,6 @@
 name: add comment
 on: 
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/TestPR.yml'
