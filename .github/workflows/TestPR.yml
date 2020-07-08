@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - '.github/workflows/TestPR.yml'
+    branches: 
+      - '0601'
 
 jobs:
 
