@@ -1,40 +1,37 @@
-name: add comment
+name: rename 2
 on: 
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/TestPR.yml'
-    branches: 
-      - '0601'
+
 
 jobs:
 
-  job2:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      commitid: ${{ steps.commit.outputs.commitid }}
+      
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create local changes
+      run: |
+        echo "hello" >> sales663.txt
+    - name: Commit files
+      id: commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add --all
+        git commit -m "Add changes" -a
+        git push -u origin $GITHUB_REF 
+        SHA=$(git rev-parse HEAD)
+        echo "::set-output name=commitid::$SHA"
+         
+  trystable:
+    needs: prepare
+    name: Build from the updated template
     runs-on: ubuntu-latest
     steps:
-    - name: fail when reopen
-      if: github.event.action == 'opened'
-      run: jjjjj
-    - run:  echo $github_context
-      env: 
-        github_context: ${{ tojson(github) }}
-    - name: Create comment for issue
-      if: github.event_name == 'issues'
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        issue-number: ${{tojson(github.event.issue.number)}}
-        body: |
-            @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
-    - name: Create comment for PR
-      if: github.event_name == 'pull_request'
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        issue-number: ${{tojson(github.event.number)}}
-        body: |
-            @${{ github.actor }} just so you are aware we have a dedicated Working Group for the network.
-   # - run: echo $SECRET1 &  az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=$SECRET1 
-   #   env: 
-   #     SECRET1: ${{secrets.SECRET1}}
-      
-         
-     
+      - run : echo ${{ needs.prepare.outputs.commitid }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ needs.prepare.outputs.commitid }}

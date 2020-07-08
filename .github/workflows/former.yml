@@ -1,20 +1,18 @@
 name: test bash
 on: 
-  repository_dispatch:
+  issue_comment:
+    types: [created]
+
 jobs:
-  build:
+  tests:
+    
     runs-on: ubuntu-latest
     steps:
-    #ddd
-    - uses: actions/checkout@v2
-    - name: Check package version 
-      run: |
-        RELEASE_VERSION=2.3.1
-        TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
-        
-    - name: Download all dependent repositories.
-      id: setup
-      run: echo hello
-      if: steps.check.outcome == 'failure' || steps.check.outcome == 'success'
-
+     - name: Dump GitHub context
+       env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+       run: echo "$GITHUB_CONTEXT"
+     - run: 
+         echo hello
+       if: contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/run-e2e')
 

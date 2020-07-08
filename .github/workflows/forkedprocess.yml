@@ -5,24 +5,12 @@ on:
       - '.github/workflows/forkedprocess.yml'
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-    - name: print secrets
-      run: |
-         echo 'product_build'
-      env: 
-        ENV: ${{secrets.env}}
-        
-        
-        
-        
-    - name: cancelling
-#       if: failure()
-      uses: andymckay/cancel-action@0.2
-    - run: sleep 10s
+    - run: $PWD    
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
        name: DEV_ENV_FILE  
-       path: src/.env   
+       path: C:\yan\python
