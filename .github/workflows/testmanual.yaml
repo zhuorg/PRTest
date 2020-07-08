@@ -1,8 +1,7 @@
   
 name: Get file file file file file file file file file file file file
 on:  
-  push:
-    
+
   workflow_dispatch:
     inputs:
       newUnityVersion:
