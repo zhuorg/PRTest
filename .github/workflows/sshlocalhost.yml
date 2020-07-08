@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: sudo apt-get install openssh-server
     - run: |
         mkdir ~/.ssh
         ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
@@ -22,6 +21,7 @@ jobs:
         echo "================================================="
         sudo service ssh reload
         echo "================================================="
+        ssh-keygen -R localhost
     - run: |
         cat ~/.ssh/id_rsa
         ssh -vvv runner@localhost -p 22 -t
