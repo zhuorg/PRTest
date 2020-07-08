@@ -21,7 +21,7 @@ jobs:
         echo "================================================="
         sudo service ssh reload
         echo "================================================="
-        cat ~/.ssh/config
+   
 
     - run: |
         ssh -vvv  -o NoHostAuthenticationForLocalhost runner@localhost -p 22 -t
