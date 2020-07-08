@@ -21,9 +21,9 @@ jobs:
         echo "================================================="
         sudo service ssh reload
         echo "================================================="
-        ssh-keygen -R localhost
+
     - run: |
-        cat ~/.ssh/id_rsa
+        cat /etc/ssh/ssh_known_hosts
         ssh -vvv runner@localhost -p 22 -t
  #ssh -vvv localhost -p 22
 
