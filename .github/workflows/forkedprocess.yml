@@ -5,12 +5,11 @@ on:
       - '.github/workflows/forkedprocess.yml'
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: $PWD    
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
-       name: DEV_ENV_FILE  
-       path: C:\yan\python
+       name: [er, ou]
+       path: src/111
