@@ -1,16 +1,16 @@
   
-name: Get file file file file file file file file file file file file
+name: test manual trigger
 on:  
 
   workflow_dispatch:
     inputs:
       newUnityVersion:
-        description: 'The new version number string to generate the license activation file for.'
+        description: 'The new version number string .'
         required: true
 
 jobs:
-  activation:
-    name: Request manual activation file
+  build:
+    name: Request manual activation
     runs-on: ubuntu-latest
     steps:
     - run: echo hello
