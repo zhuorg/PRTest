@@ -11,5 +11,7 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
-       name: [er, ou]
+       name: | 
+         ni
+         mi
        path: src/111
