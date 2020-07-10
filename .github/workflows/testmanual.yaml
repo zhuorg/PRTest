@@ -7,10 +7,12 @@ on:
 
 jobs:
   build:
-    name: 11
+    name: 114e
     runs-on: ubuntu-latest
     steps:
     - run: echo hello
     - name: Dump GitHub context
       run: |
          echo $GITHUB_JOB 
+      env: 
+        var1: ${{job.status}}
