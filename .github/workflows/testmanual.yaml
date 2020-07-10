@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo hello
-    - name: Dump GitHub context
+    - name: job status
       run: |
-         echo $GITHUB_JOB 
+         echo $var1 
       env: 
         var1: ${{job.status}}
