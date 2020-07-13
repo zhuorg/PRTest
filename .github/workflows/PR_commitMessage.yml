@@ -1,16 +1,32 @@
 name: filter commit nessage
-on: pull_request
+on: 
+  workflow_dispatch:
+    inputs:
+      login_server:
+        description: 'login server'     
+        required: true
+        default: "xx.xx.xx.xx"
+      username:
+        description: 'username'  
+        required: true
+      password:
+        description: 'password'  
+        required: true        
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
+      - run: | 
+          echo ${{github.event.inputs.login_server}}
+          echo ${{github.event.inputs.username}}
+          echo ${{github.event.inputs.password}}
       - uses: actions/checkout@v1
 
-      - name : GITHUB CONTEXT
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+#       - name : GITHUB CONTEXT
+#         env:
+#           GITHUB_CONTEXT: ${{ toJson(github) }}
+#         run: echo "$GITHUB_CONTEXT"
 
       - name: get commit message
         run: |
