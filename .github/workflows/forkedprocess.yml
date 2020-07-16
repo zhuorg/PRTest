@@ -1,4 +1,4 @@
-name: try docker action
+name: get latest release
 on:
   push:
     paths: 
@@ -8,8 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
+    - uses: actions/github-script@v2
       with:
-       name: mi
-       path: src/111
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+            github.repos.getLatestRelease({
+             owner: context.repo.owner,
+             repo: context.repo.repo,
+            });
+    
+     
