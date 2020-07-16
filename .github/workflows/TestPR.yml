@@ -22,7 +22,8 @@ jobs:
 #         git config --local user.name "github-actions"
       id: commit
       run: |
-        
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
         git push -u origin $GITHUB_REF 
