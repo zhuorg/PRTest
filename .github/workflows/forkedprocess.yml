@@ -1,17 +1,29 @@
 name: get latest release
 on:
-  push:
-    paths: 
-      - '.github/workflows/forkedprocess.yml'
+    issues:
+       types: [opened]
+#   push:
+#     paths: 
+#       - '.github/workflows/forkedprocess.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/github-script@v2
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-           github.repos.getRelease({owner: context.repo.owner, repo: context.repo.repo, release_id: 25844165 });
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['Triage']
+            })
+#     - uses: actions/github-script@v2
+#       with:
+#         github-token: ${{secrets.GITHUB_TOKEN}}
+#         script: |
+#            github.repos.getRelease({owner: context.repo.owner, repo: context.repo.repo, release_id: 25844165 });
     
      
