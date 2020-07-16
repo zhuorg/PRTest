@@ -17,7 +17,9 @@ jobs:
           repository: ${{ github.repository }}
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: echo $response
+    - name: get upload url
+      run: |
+        echo "$response" | jq -r '.upload_url'
       env: 
-          response:  ${{ steps.get_latest_release.outputs.data.upload_url }}
+          response:  ${{ steps.get_latest_release.outputs.data }}
      
