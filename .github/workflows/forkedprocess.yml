@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/github-script@v2
-        with:
+      with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.addLabels({
