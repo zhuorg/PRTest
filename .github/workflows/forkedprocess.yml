@@ -10,20 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/github-script@v2
+    - uses: octokit/request-action@v2.x
+      id: get_latest_release
       with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['Triage']
-            })
-#     - uses: actions/github-script@v2
-#       with:
-#         github-token: ${{secrets.GITHUB_TOKEN}}
-#         script: |
-#            github.repos.getRelease({owner: context.repo.owner, repo: context.repo.repo, release_id: 25844165 });
-    
+          route: GET /repos/:repository/releases/latest
+          repository: ${{ github.repository }}
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: "echo latest release: ${{ steps.get_latest_release.outputs.data }}"
      
