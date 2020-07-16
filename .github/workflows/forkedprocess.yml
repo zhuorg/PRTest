@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Build project # This would actually build your project, using zip for an example artifact
+      run: |
+          zip --junk-paths my-artifact README.md
     - uses: octokit/request-action@v2.x
       id: get_latest_release
       with:
@@ -18,8 +21,21 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: get upload url
+      id: get_upload_url
       run: |
-        echo "$response" | jq -r '.upload_url'
+        url=$(echo "$response" | jq -r '.upload_url')
+        echo "::set-output name=url::$url"
       env: 
           response:  ${{ steps.get_latest_release.outputs.data }}
      
+    - name: Upload a Release Asset
+      uses: actions/upload-release-asset@v1.0.2
+      with:
+        # The URL for uploading assets to the release
+        upload_url:  ${{steps.get_upload_url.outputs.url}}
+        # The path to the asset you want to upload
+        asset_path: ./my-artifact.zip
+        # The name of the asset you want to upload
+        asset_name: my-artifact.zip
+        # The content-type of the asset you want to upload. See the supported Media Types here: https://www.iana.org/assignments/media-types/media-types.xhtml for more information
+        asset_content_type: application/zip
