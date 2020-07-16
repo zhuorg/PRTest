@@ -1,12 +1,14 @@
 name: rename 2
 on: 
-  workflow_dispatch:
+  push:
+    paths: 
+      - '.github/workflows/TestPR.yml'
 
 
 jobs:
 
   prepare:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       commitid: ${{ steps.commit.outputs.commitid }}
       
@@ -16,10 +18,11 @@ jobs:
       run: |
         echo "hello" >> sales663.txt
     - name: Commit files
+#       git config --local user.email "action@github.com"
+#         git config --local user.name "github-actions"
       id: commit
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "github-actions"
+        
         git add --all
         git commit -m "Add changes" -a
         git push -u origin $GITHUB_REF 
