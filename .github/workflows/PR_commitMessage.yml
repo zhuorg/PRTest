@@ -15,6 +15,7 @@ on:
 
 jobs:
   build-and-test:
+    name: trtrrtr
     runs-on: ubuntu-latest
     steps:
       - run: | 
